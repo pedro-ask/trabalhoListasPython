@@ -1,0 +1,204 @@
+print("Integrantes do grupo: Antony, Gustavo e Pedro Arthur.") #Mensagem exibida somente no início do programa.
+
+cargo_empresa = [] #Lista de cargo empresarial.
+
+empregado = [] #Lista de empregado.
+
+cont = 0 #Contador para o menu.
+
+
+while cont!="6": #Escolhas do menu.
+
+    print("""Observe o menu a seguir:
+
+(1) Cadastrar cargo ou empregado
+
+(2) Pesquisar cargo ou empregado
+
+(3) Alterar dados de cargo ou empregado
+
+(4) Remover cargo ou empregado
+
+(5) Exibir cargo(s) e empregado(s)
+
+(6) Sair do programa""")
+
+    cont=input("Escolha uma opção:") #Resposta do usuário.
+
+
+    #(1) Cadastrar.
+    if cont=="1": #Caso o usuário digite 1.
+
+        adicionado=input("Qual você deseja cadastrar ? Cargo ou Empregado ?")
+
+
+        if adicionado.lower()=="cargo": #Se digitar cargo.
+
+            adi_cargo=input("Qual o cargo que deseja cadastrar ?").lower()
+
+            cargo_empresa.append(adi_cargo) #Adiciona cargo.
+
+            print("O cargo foi cadastrado.")
+
+
+        elif adicionado.lower()=="empregado": #Se digitar empregado.
+
+            adi_empregado=input("Qual o nome do empregado ?").lower()
+
+            empregado.append(adi_empregado) #Adiciona empregado.
+
+            print("O empregado foi cadastrado.")
+
+
+        
+        else: #Se digitar qualquer coisa.
+
+            print("Só é possivel adicionar cargos ou empregados, tente novamente.")
+
+    #(2) Procurar cargo/empregado.
+    elif cont=="2": #Caso o usuário digite 2.
+
+        procurando=input("Qual você está procurando? Cargo ou Empregado ?")
+
+
+        if procurando.lower()=="cargo": #Se escolher cargo.
+
+            nome_cargo=input("Qual o cargo que está procurando ?").lower()
+
+            if nome_cargo in cargo_empresa: #Se o nome do cargo estiver na lista de cargos.
+
+                print("Este cargo existe na empresa.")
+
+            else: 
+
+                print("Este cargo não existe na empresa.")
+
+
+        elif procurando.lower()=="empregado": #Se escolher empregado.
+
+            nome_empregado=input("Qual o nome do empregado que você está procurando ?").lower()
+
+            if nome_empregado in empregado: #Se o nome do empregado estiver na lista de empregados.
+
+                print("Este empregado trabalha na empresa.")
+
+            else: 
+
+                print("Este empregado não trabalha na empresa.")
+
+
+        
+        else: #Se digitar qualquer coisa
+
+            print("Só é possivel procurar cargos e empregados, tente novamente.")
+
+    #(3) Editar.
+    elif cont=="3": #Caso o usuário digite 3.
+
+        editando=input("Você deseja editar um cargo ou empregado ?")
+
+
+        if editando.lower()=="cargo": #Se escolher cargo.
+
+            ed_cargo=input("Qual o nome do cargo que deseja editar ?").lower()
+
+
+            if ed_cargo in cargo_empresa: #Se o nome do cargo estiver na lista de cargos.
+
+                posCargo = cargo_empresa.index(ed_cargo)
+                cargo_empresa[posCargo] = input("Escreva e edite o cargo: ").lower()
+
+                print("Cargo editado com sucesso!")
+
+            else: 
+
+                print("Esse cargo não está cadastrado na empresa!")
+
+
+        elif editando.lower()=='empregado': #Se escolher empregado.
+
+            ed_empregado=input("Qual o nome do empregado que deseja editar ?").lower()
+
+
+            if ed_empregado in empregado: #Se o nome do empregado estiver na lista de empregado.
+
+                posEmpregado = empregado.index(ed_empregado)
+                empregado[posEmpregado] = input("Escreva e edite o empregado: ").lower()
+
+                print("Empregado editado com sucesso!")
+
+
+            else: 
+
+                print("Esse empregado não está cadastrado na empresa!")
+
+
+        else: #Se digitar qualquer coisa.
+
+            print("Só é possível editar cargos e empregados na lista!")
+
+    #(4) Remover.
+    elif cont=="4": #Caso o usuário digite 4.
+
+        remover=input("Você deseja remover um cargo ou empregado ?")
+
+
+        if remover.lower()=="cargo": #Se escolher cargo.
+
+            re_cargo=input("Qual o nome do cargo que deseja remover ?").lower()
+
+            if re_cargo in cargo_empresa: #Se o nome do cargo estiver na lista de cargo.
+                
+                pos_cargo = cargo_empresa.index(re_cargo)
+                cargo_empresa[pos_cargo] = '#'
+
+                print("Cargo removido com sucesso!")
+
+            else:
+
+                print("Esse cargo não está cadastrado na empresa!")
+
+
+        elif remover.lower()=="empregado": #Se escolher empregado.
+
+            re_empregado=input("Qual é o nome do empregado que deseja remover? ").lower()
+
+            if re_empregado in empregado: #Se o nome do empregado estiver na lista empregado.
+
+                pos_empregado = empregado.index(re_empregado)
+                empregado[pos_empregado] = '#'
+
+                print("Empregado removido com sucesso!")
+
+            
+            else:
+
+                print("Este empregado não está cadastrado na empresa!")
+
+
+        else: #Se digitar qualquer coisa.
+
+            print("Só é possível remover cargos ou empregados, tente novamente!")
+
+    
+    #(5) Somente exibição.
+    elif cont=="5": #Caso o usuário digite 5.
+
+        print(f"Cargos cadastrados na empresa: {cargo_empresa}")
+
+        print(f"Empregados cadastrados na empresa: {empregado}")
+
+        prosseguir=input("Depois de visualizar, pressione a tecla | ENTER | para prosseguir.")
+
+
+    #(6) Somente finalização.
+    elif cont=="6": #Caso o usuário digite 6.
+
+        print("Obrigado(a) por usar nosso programa!")
+
+
+    else: #Caso for digitado qualquer coisa além de 1 a 6.
+
+        print("Não existe essa opção, escolha um número de 1 a 6.")
+
+print("Fim." + " :D")
